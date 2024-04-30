@@ -1,7 +1,12 @@
 package Servidor.Controller;
 
 import java.io.IOException;
+import java.util.Locale;
 import java.util.Properties;
+import java.util.Scanner;
+
+import javax.sound.midi.Synthesizer;
+
 import Servidor.Model.ServidorConexion;
 import Servidor.View.*;
 
@@ -38,4 +43,8 @@ public class ServidorControl {
             aviso.verExcepcion(e);
         }
     }
+
 }
+    
+   
+
