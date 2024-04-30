@@ -1,13 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Servidor.Controller;
 
-/**
- *
- * @author Sara
- */
 public class ServidorLauncher {
-    
+    public static void main(String[] args) {
+        new ServidorControl();
+    }
 }
