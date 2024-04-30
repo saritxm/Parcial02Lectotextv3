@@ -1,6 +1,12 @@
 {
-    "java.project.referencedLibraries": [
-        "lib/**/*.jar",
-        "librerias/AbsoluteLayout.jar"
-    ]
+    "java.project.referencedLibraries": {
+        "include": [
+            "lib/**/*.jar",
+            "librerias/AbsoluteLayout.jar",
+            "librerias/mysql-connector-java-5.1.46 (1).jar"
+        ],
+        "exclude": [
+            "lib/AbsoluteLayout.jar"
+        ]
+    }
 }
