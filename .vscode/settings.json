@@ -3,7 +3,8 @@
         "include": [
             "lib/**/*.jar",
             "librerias/AbsoluteLayout.jar",
-            "librerias/mysql-connector-java-5.1.46 (1).jar"
+            "librerias/mysql-connector-java-5.1.46 (1).jar",
+            "librerias/cgjsapi.jar"
         ],
         "exclude": [
             "lib/AbsoluteLayout.jar"
