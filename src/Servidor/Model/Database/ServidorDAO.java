@@ -42,6 +42,7 @@ public class ServidorDAO {
 
     public int inicioSesion(String username, String password) throws SQLException{
         String insert = "SELECT * FROM users WHERE username='"+username+"'";
+        int result = 0;
 
         con = (Connection) Conexion.getConexion(); 
         st = con.createStatement();
@@ -54,16 +55,20 @@ public class ServidorDAO {
             rs = st.executeQuery(insert);
             //Inicio de sesion existoso
             if(rs.next()){
-                return 1;
+                result = 1;
             }
             //Constraseña incorrecta
             else{
-                return 2;
+                result =  2;
             }
+            
         }
+        //El usuario no existe
         else{
-            //El usuario no existe
-            return 0;
+            result =  0;
         }
+        rs.close();
+        Conexion.desconectar();
+        return result;
     } 
 }
