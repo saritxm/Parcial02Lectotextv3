@@ -13,14 +13,14 @@ import java.sql.Statement;
  *
  * @author Sara
  */
-public class ServidorDAO {
+public class DatabaseDAO {
     
     private Connection con;
     private Statement st;
     private ResultSet rs;
     private PreparedStatement ps;
     
-    public ServidorDAO() {
+    public DatabaseDAO() {
         con = null;
         st = null;
         rs = null;
@@ -28,7 +28,7 @@ public class ServidorDAO {
     public void agregarUsuario(String username, String password) throws SQLException{
         String insert = "INSERT INTO users VALUES (?,?)";
 
-        con = (Connection) Conexion.getConexion();
+        con = (Connection) DatabaseConexion.getConexion();
         ps = con.prepareStatement(insert);
 
         ps.setString(1, username);
@@ -37,14 +37,14 @@ public class ServidorDAO {
         ps.executeUpdate();
 
         ps.close();
-        Conexion.desconectar();
+        DatabaseConexion.desconectar();
     }
 
     public int inicioSesion(String username, String password) throws SQLException{
         String insert = "SELECT * FROM users WHERE username='"+username+"'";
         int result = 0;
 
-        con = (Connection) Conexion.getConexion(); 
+        con = (Connection) DatabaseConexion.getConexion(); 
         st = con.createStatement();
         rs = st.executeQuery(insert);
         if(rs.next()){
@@ -68,7 +68,7 @@ public class ServidorDAO {
             result =  0;
         }
         rs.close();
-        Conexion.desconectar();
+        DatabaseConexion.desconectar();
         return result;
     } 
 }

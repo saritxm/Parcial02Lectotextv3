@@ -1,7 +1,7 @@
 package Servidor.Model.Database;
 
 public class x2 {
-    ServidorDAO cosa = new ServidorDAO();
+    DatabaseDAO cosa = new DatabaseDAO();
     x2(){
         try {
             cosa.agregarUsuario("usuario","de prueba");

@@ -12,7 +12,7 @@ import java.sql.SQLException;
  *
  * @author Sara
  */
-public class Conexion {
+public class DatabaseConexion {
 
 
     private static Connection cn = null; 
