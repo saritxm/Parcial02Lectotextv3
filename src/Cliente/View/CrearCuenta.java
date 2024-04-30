@@ -19,22 +19,7 @@ public class CrearCuenta extends JFrame {
 	public JTextField password;
 	public JTextField user;
 	public JButton crearCuentabtn;
-	private JTextField password2;
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					CrearCuenta frame = new CrearCuenta();
-					frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
+	public JTextField password2;
 
 	/**
 	 * Create the frame.

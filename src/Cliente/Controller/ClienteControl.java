@@ -7,7 +7,9 @@ import java.net.UnknownHostException;
 
 import Cliente.Model.ClienteConexion;
 import Cliente.View.Aviso;
+import Cliente.View.CrearCuenta;
 import Cliente.View.FileChooser;
+import Cliente.View.Login;
 import Cliente.View.VentanaPrincipal;
 
 public class ClienteControl implements ActionListener{
@@ -18,6 +20,9 @@ public class ClienteControl implements ActionListener{
     private String mensaje;
     private FileChooser fileChooser;
     private Aviso aviso;
+    private Login inicioSesion;
+    private CrearCuenta cr;
+
     
     public ClienteControl(){
         this.properties = new Properties();
@@ -31,10 +36,17 @@ public class ClienteControl implements ActionListener{
         } catch (Exception e) {
             aviso.verExcepcionConexion(e);
         }
-        this.ventanaPrincipal = new VentanaPrincipal();
-        ventanaPrincipal.getBtnLeer().addActionListener(this);
-        ventanaPrincipal.getBtnSalir().addActionListener(this);
+        
+        inicio();
     }
+
+    private void inicio(){
+        inicioSesion = new Login();
+        inicioSesion.loginBtn.addActionListener(this);
+        inicioSesion.crearCuentabtn.addActionListener(this);
+        inicioSesion.setVisible(true);
+    }
+
     public void cargarProperties(){
         try{
             this.properties.load(this.fileChooser.getProperties());
@@ -43,24 +55,38 @@ public class ClienteControl implements ActionListener{
             aviso.verExcepcionProperties(e);
         }
     }
+
+    /**
+     * Verificar cliente y crear hilo
+     */
+    private void iniciarCliente(){
+        String user = inicioSesion.user.getText();
+        String password = inicioSesion.password.getText();
+        inicioSesion.dispose();
+        new ClienteCControl(this);
+    }
+
+    private void crearCuenta(){
+        String user = cr.user.getText();
+        String p1  = cr.password.getText();
+        String p2  = cr.password.getText();
+    }
+
     public void actionPerformed(ActionEvent e){
-        if(e.getSource() == ventanaPrincipal.getBtnLeer()){
-            mensaje = ventanaPrincipal.getTextArea().getText();
-            try{
-            cliente.enviarCadenas(mensaje);
-            }catch(Exception ex){
-                aviso.verExcepcionFlujos(ex);
-            }
-            ventanaPrincipal.getTextArea().setText("");
+        //Inicio de seson
+        if(e.getSource()==inicioSesion.loginBtn){
+            iniciarCliente();
+            System.out.println("xd");
         }
-        if(e.getSource() == ventanaPrincipal.getBtnSalir()){
-            try{
-            cliente.cerrarSockets(true);
-            }catch(Exception ex){
-                aviso.verExcepcionCerrar(ex);
-            }
-            ventanaPrincipal.dispose();
-            aviso.verMensaje("Desconectado");
+        //Crear cuenta
+        else if(e.getSource()==inicioSesion.crearCuentabtn){
+          inicioSesion.setVisible(false);
+          cr = new CrearCuenta();
+          cr.crearCuentabtn.addActionListener(this);
+          cr.setVisible(true);
+        }
+        else if(e.getSource()==cr.crearCuentabtn){
+            crearCuenta();
         }
     }
 }
