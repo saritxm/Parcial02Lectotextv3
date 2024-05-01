@@ -13,24 +13,30 @@ public class LecturaPuertos {
     private int p1;
     private int p2;
 
+    // Getters y setters
     public int getP1() {
         return p1;
     }
+
     public void setP1(int p1) {
         this.p1 = p1;
     }
+
     public int getP2() {
         return p2;
     }
+
     public void setP2(int p2) {
         this.p2 = p2;
     }
+
     /**
      * COnstructor de la clase
      */
     public LecturaPuertos() {
         this.prop = new Properties(); // Inicializa el objeto de propiedades
     }
+
     /**
      * Metodo para establecer el archivo de propiedades
      * 
@@ -44,7 +50,10 @@ public class LecturaPuertos {
         }
     }
 
-    public void cargarPuertos(){
+    /**
+     * Metodo encargado de cargar los puertos
+     */
+    public void cargarPuertos() {
         p1 = Integer.parseInt(prop.getProperty("port.1"));
         p2 = Integer.parseInt(prop.getProperty("port.2"));
     }

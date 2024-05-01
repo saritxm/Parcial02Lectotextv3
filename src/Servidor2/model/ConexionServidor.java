@@ -80,10 +80,10 @@ public class ConexionServidor {
             serv2 = new ServerSocket(p2);
             avisos.accept(".::Servidor activo :"); // Se emite un aviso de que el servidor está activo
             while (listening) {
-                
+
                 try {
                     avisos.accept("Esperando Usuarios");// Se emite un aviso de que se está esperando a los usuarios
-                 // Se aceptan las conexiones de los usuarios
+                    // Se aceptan las conexiones de los usuarios
                     sock = serv.accept();
                     sock2 = serv2.accept();
                 } catch (IOException e) {
@@ -96,7 +96,8 @@ public class ConexionServidor {
             }
 
         } catch (IOException e) {
-            // Si ocurre un error durante la ejecución del servidor, se emite un mensaje de error
+            // Si ocurre un error durante la ejecución del servidor, se emite un mensaje de
+            // error
             avisos.accept("error :" + e);
         }
     }
