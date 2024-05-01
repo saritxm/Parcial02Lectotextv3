@@ -6,12 +6,12 @@ import java.io.FileInputStream;
 import java.util.Properties;
 
 /**
- * Metodo encargado de leer los puertos de un properties
+ * Clase encargada de leer los puertos desde un archivo de propiedades.
  */
 public class LecturaPuertos {
     private Properties prop; // Propiedades del archivo
-    private int p1;
-    private int p2;
+    private int p1; // Variable para almacenar el primer puerto
+    private int p2; // Variable para almacenar el segundo puerto
 
     // Getters y setters
     public int getP1() {
@@ -54,6 +54,7 @@ public class LecturaPuertos {
      * Metodo encargado de cargar los puertos
      */
     public void cargarPuertos() {
+        // Lee los puertos del archivo de propiedades y los convierte a enteros
         p1 = Integer.parseInt(prop.getProperty("port.1"));
         p2 = Integer.parseInt(prop.getProperty("port.2"));
     }

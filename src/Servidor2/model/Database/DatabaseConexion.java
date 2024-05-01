@@ -12,26 +12,30 @@ import java.sql.SQLException;
  *
  * @author Sara
  */
+/**
+ * Clase encargada de gestionar la conexión a la base de datos.
+ */
 public class DatabaseConexion {
+    private static Connection cn = null;// Objeto para establecer la conexión con la base de datos
+    private static String URLBD = "jdbc:mysql://localhost:3306/users"; // URL de la base de datos
+    private static String usuario = "root";// Nombre de usuario de la base de datos
+    private static String contrasena = "";// Contraseña de la base de datos
 
-
-    private static Connection cn = null; 
-    private static String URLBD = "jdbc:mysql://localhost:3306/users";
-    private static String usuario = "root"; 
-    private static String contrasena = "";
-    
+    /**
+     * Método estático para obtener una conexión a la base de datos
+     */
     public static Connection getConexion() {
         try {
+            // Establecer la conexión con la base de datos utilizando los parámetros de
+            // conexión
             cn = DriverManager.getConnection(URLBD, usuario, contrasena);
         } catch (SQLException ex) {
-            
+
         }
-        return cn;
+        return cn; // Devuelve la conexión establecida o null si ocurrió un error
     }
 
     public static void desconectar() {
-        cn = null;
+        cn = null; // Establece el objeto Connection como null para cerrar la conexión
     }
 }
-
-   

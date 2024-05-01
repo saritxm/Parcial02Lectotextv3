@@ -9,22 +9,22 @@ import java.io.IOException;
 
 public class ServidorControl {
 
-   private FileSelector fc;
-   private LecturaPuertos pt;
+   private FileSelector fc; // Selector de archivos
+   private LecturaPuertos pt; // Objeto para leer los puertos
    private ServidorVista vista; // Vista del servidor
    private ConexionServidor con;// Conexión del servidor
 
    // Constructor de la clase
    public ServidorControl() throws IOException{
-      pt = new LecturaPuertos();
-      fc = new FileSelector();
-      fc.fileP2();
-      fc.fProp2.showOpenDialog(fc.fProp2);
-      pt.setProp(fc.fProp2.getSelectedFile());
+      pt = new LecturaPuertos(); // Inicialización del objeto para leer los puertos
+      fc = new FileSelector(); // Inicialización del selector de archivos
+      fc.fileP2(); // Configura el selector de archivos
+      fc.fProp2.showOpenDialog(fc.fProp2); // Abre el diálogo para seleccionar el archivo
+      pt.setProp(fc.fProp2.getSelectedFile()); // Establece el archivo de propiedades para los puertos
       try {
-         pt.cargarPuertos();
+         pt.cargarPuertos();// Carga los puertos desde el archivo de propiedades
       } catch (Exception e) {
-         fc.error();
+         fc.error();// Muestra un mensaje de error si ocurre un problema al cargar los puertos
       }
       
        // Inicializa la vista del servidor y la conexión del servidor

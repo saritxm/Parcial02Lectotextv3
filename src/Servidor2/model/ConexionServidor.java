@@ -24,10 +24,10 @@ public class ConexionServidor {
      * Constructor que recibe los consumidores para manejar mensajes, lanzar hilos,
      * y recibe los puertos
      * 
-     * @param avisos
-     * @param lanzarHilo
-     * @param p1
-     * @param p2
+     * @param avisos     Consumer para enviar mensajes de aviso.
+     * @param lanzarHilo Consumer para lanzar hilos.
+     * @param p1         Puerto para la comunicación.
+     * @param p2         Puerto para enviar mensajes.
      */
     public ConexionServidor(Consumer<String> avisos, Consumer<Object> lanzarHilo, int p1, int p2) {
         this.avisos = avisos;
