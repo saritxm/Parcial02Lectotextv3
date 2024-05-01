@@ -19,6 +19,7 @@ public class ClienteCControl implements ActionListener{
     private ClienteControl principal;
 
     public ClienteCControl(ClienteControl princial){
+        this.cliente = princial.getCliente();
         this.principal = princial;
         this.aviso = new Aviso();
         this.ventanaPrincipal = new VentanaPrincipal();
