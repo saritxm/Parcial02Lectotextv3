@@ -11,6 +11,9 @@ public class Aviso {
     public void verExcepcionHost(UnknownHostException e) {
         JOptionPane.showMessageDialog(null, "Error: no se encontro el servidor");
     }
+    public void verMensajeOP(String x) {
+        JOptionPane.showMessageDialog(null, x);
+    }
     public void verMensaje(String mensaje) {
         System.out.println(mensaje);
     }
@@ -22,5 +25,14 @@ public class Aviso {
     }
     public void verExcepcionConexion(Exception e) {
         JOptionPane.showMessageDialog(null, "Error: no se pudo conectar al servidor");
+    }
+    public String ip() {
+        // Muestra un cuadro de diálogo para que el usuario introduzca la dirección IP
+        // del servidor
+        // El valor por defecto es "localhost"
+        return JOptionPane.showInputDialog("Introducir IP_SERVER :", "localhost");
+    }
+    public void consola(String x) {
+        System.out.println(x);
     }
 }

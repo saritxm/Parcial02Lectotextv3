@@ -19,7 +19,6 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     public VentanaPrincipal() {
         setTitle("Cliente: Aplicación Inclusiva para la Lectura de Textos");
         initComponents();
-        this.setVisible(true);
     }
 
     /**
