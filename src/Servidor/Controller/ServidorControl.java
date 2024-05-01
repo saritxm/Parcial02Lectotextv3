@@ -25,7 +25,7 @@ public class ServidorControl {
         aviso.verMensaje("Servidor lanzado");
         try{
             servidor.conectar();
-            hilo = new Thread(new HiloServer(servidor.getServerSocket(), this));
+            hilo = new Thread(new HiloServer(servidor.getServerSocket(), servidor.getServerSocket2(),this));
             hilo.start();
         }catch(IOException e){
             aviso.verExcepcionConexion(e);

@@ -29,13 +29,7 @@ public class ClienteControl implements ActionListener{
         this.fileChooser = new FileChooser();
         this.aviso = new Aviso();
         cargarProperties();
-        try {
-            this.cliente = new ClienteConexion(p1);
-        } catch (UnknownHostException e) {
-            aviso.verExcepcionHost(e);
-        } catch (Exception e) {
-            aviso.verExcepcionConexion(e);
-        }
+        this.cliente = new ClienteConexion(p1);
         
         inicio();
     }
@@ -62,8 +56,24 @@ public class ClienteControl implements ActionListener{
     private void iniciarCliente(){
         String user = inicioSesion.user.getText();
         String password = inicioSesion.password.getText();
-        inicioSesion.dispose();
-        new ClienteCControl(this);
+        try {
+            int op = cliente.iniciarS(user, password);
+            System.out.println(op);
+            switch (op) {
+                case 1:
+                    inicioSesion.dispose();
+                    new ClienteCControl(this);
+
+                    break;
+            
+                default:
+                    break;
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        
     }
 
     private void crearCuenta(){
