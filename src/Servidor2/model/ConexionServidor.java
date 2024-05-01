@@ -82,7 +82,7 @@ public class ConexionServidor {
             while (listening) {
 
                 try {
-                    avisos.accept("Esperando Usuarios");// Se emite un aviso de que se está esperando a los usuarios
+                    avisos.accept("Esperando conexion");// Se emite un aviso de que se está esperando a los usuarios
                     // Se aceptan las conexiones de los usuarios
                     sock = serv.accept();
                     sock2 = serv2.accept();

@@ -98,7 +98,7 @@ public class ClienteControl implements ActionListener {
     private void crearCuenta() {
         String user = cr.user.getText();
         String p1 = cr.password.getText();
-        String p2 = cr.password.getText();
+        String p2 = cr.password2.getText();
         if (user.isBlank() || p1.isBlank() || p2.isBlank()) {
             aviso.verMensajeOP("Llene todos los campos por favor");
         } else if (p1.equals(p2)) {

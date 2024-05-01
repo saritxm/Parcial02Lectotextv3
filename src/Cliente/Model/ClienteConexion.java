@@ -78,4 +78,5 @@ public class ClienteConexion {
       salida.writeUTF(mensaje);
       salida.writeUTF(idioma);
    }
+
 }
