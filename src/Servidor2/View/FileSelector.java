@@ -1,21 +1,22 @@
-package Cliente.View;
+package Servidor2.View;
 
 import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 
-public class FileChooser {
+public class FileSelector {
     public JFileChooser fProp; // JFileChooser para el archivo de propiedades
-    public FileChooser() {
+    public JFileChooser fProp2;
+    public FileSelector() {
         // Constructor vacío
     }
     /**
      * Método para configurar el JFileChooser para el archivo de propiedades
      */
      
-    public void fileP() {
-        fProp = new JFileChooser(System.getProperty("user.dir")); // Crea un JFileChooser en el directorio del usuario
+    public void fileP2() {
+        fProp2 = new JFileChooser(System.getProperty("user.dir")); // Crea un JFileChooser en el directorio del usuario
                                                             
-        fProp.setDialogTitle("Seleccionar el archivo de propiedades para los puertos del servidor");
+        fProp2.setDialogTitle("Seleccionar el archivo de propiedades para los puertos del servidor");
     }
 
     // Método para mostrar un mensaje de error
