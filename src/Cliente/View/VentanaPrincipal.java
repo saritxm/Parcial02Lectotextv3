@@ -113,7 +113,7 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 180, -1, -1));
 
         eFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Cliente/View/GIF.gif"))); // NOI18N
-        jPanel1.add(eFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, -1, 590));
+        jPanel1.add(eFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 550));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 560));
 
