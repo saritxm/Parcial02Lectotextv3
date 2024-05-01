@@ -44,7 +44,7 @@ public class HiloServidor {
     }
     public static void main(String[] args) {
         HiloServidor hiloServidor = new HiloServidor();
-        String texto = "hello my dear love"; // El texto que deseas sintetizar
+        String texto = "hello my friend"; // El texto que deseas sintetizar
         String idioma = "En"; // Valor predeterminado
         // Puedes modificar este valor de idioma según lo que recibas de los radio buttons
         hiloServidor.leerTexto(texto, idioma);
