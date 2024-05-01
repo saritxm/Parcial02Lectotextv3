@@ -7,8 +7,7 @@ public class ClienteConexion {
 
     private ServerSocket fromServer;
     private DataOutputStream dataOutputStreamCliente;
-    private Socket socketClienteOut, socketClienteIn;
-    private DataInputStream dataInputStreamCliente;
+    private Socket socketClienteOut;
     private int puerto;
     private static String IP_SERVER;
 
@@ -19,8 +18,6 @@ public class ClienteConexion {
     }
     public void cerrarSockets(boolean activo)throws IOException {
         if(activo){
-            dataInputStreamCliente.close();
-            socketClienteIn.close();
             socketClienteOut.close();
             dataOutputStreamCliente.close();
             fromServer.close();

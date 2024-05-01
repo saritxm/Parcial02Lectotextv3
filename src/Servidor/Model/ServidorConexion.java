@@ -41,4 +41,7 @@ public class ServidorConexion {
     public String getMensaje(){
         return this.mensaje;
     }
+    public ServerSocket getServerSocket(){
+        return this.ServerSocketServidor;
+    }
 }

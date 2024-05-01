@@ -76,7 +76,7 @@ public class ClienteControl implements ActionListener{
         //Inicio de seson
         if(e.getSource()==inicioSesion.loginBtn){
             iniciarCliente();
-            System.out.println("xd");
+            //System.out.println("xd");
         }
         //Crear cuenta
         else if(e.getSource()==inicioSesion.crearCuentabtn){
@@ -88,5 +88,8 @@ public class ClienteControl implements ActionListener{
         else if(e.getSource()==cr.crearCuentabtn){
             crearCuenta();
         }
+    }
+    public ClienteConexion getCliente(){
+        return this.cliente;
     }
 }

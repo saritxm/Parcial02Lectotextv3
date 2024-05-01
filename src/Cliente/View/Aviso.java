@@ -6,7 +6,7 @@ import javax.swing.JOptionPane;
 
 public class Aviso {
     public void verExcepcionFlujos(Exception e) {
-        JOptionPane.showMessageDialog(null, "Error: no se pudo crear los flujos");
+        JOptionPane.showMessageDialog(null, "Error: no se pudo crear los flujos"+e.getMessage());
     }
     public void verExcepcionHost(UnknownHostException e) {
         JOptionPane.showMessageDialog(null, "Error: no se encontro el servidor");
