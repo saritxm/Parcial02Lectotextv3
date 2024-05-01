@@ -73,9 +73,9 @@ public class ClienteConexion {
       salida.close();
    }
 
-   public void enviarCadenas(String mensaje) throws IOException {
+   public void enviarCadenas(String mensaje, String idioma) throws IOException {
       salida.writeInt(3);
       salida.writeUTF(mensaje);
-      salida.writeUTF("es");
+      salida.writeUTF(idioma);
    }
 }

@@ -127,7 +127,7 @@ public class threadServidor extends Thread {
 
          // Verifica si se pudo crear el sintetizador de voz
          if (synthesizer == null) {
-            System.out.println("No se pudo crear el sintetizador de voz");
+            serv.mostrar("No se pudo crear el sintetizador de voz");
             return;
          }
 

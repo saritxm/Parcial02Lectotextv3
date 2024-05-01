@@ -14,6 +14,7 @@ public class HiloCliente extends Thread implements ActionListener{
     private String mensaje;
     private ClienteConexion cliente;
     private Aviso aviso;
+    private String idioma =  "es";
 
     public HiloCliente(ClienteConexion con) {
         this.cliente = con;
@@ -22,6 +23,10 @@ public class HiloCliente extends Thread implements ActionListener{
 
         ventanaPrincipal.getBtnLeer().addActionListener(this);
         ventanaPrincipal.getBtnSalir().addActionListener(this);
+        ventanaPrincipal.btnNuevoCliente.addActionListener(this);
+        ventanaPrincipal.bEspañol.addActionListener(this);
+        ventanaPrincipal.bEspañol.setSelected(true);
+        ventanaPrincipal.bIngles.addActionListener(this);
         start();
     }
 
@@ -30,10 +35,18 @@ public class HiloCliente extends Thread implements ActionListener{
     }
 
     public void actionPerformed(ActionEvent e) {
+        if(e.getSource() == ventanaPrincipal.bEspañol || e.getSource() == ventanaPrincipal.bIngles){
+            if(ventanaPrincipal.bEspañol.isSelected()){
+                idioma = "Es";
+            }
+            else if(ventanaPrincipal.bIngles.isSelected()){
+                idioma = "En";
+            }
+        }
         if (e.getSource() == ventanaPrincipal.getBtnLeer()) {
             mensaje = ventanaPrincipal.getTextArea().getText();
             try {
-                cliente.enviarCadenas(mensaje);
+                cliente.enviarCadenas(mensaje,idioma);
             } catch (Exception ex) {
                 aviso.verExcepcionFlujos(ex);
             }
@@ -50,6 +63,10 @@ public class HiloCliente extends Thread implements ActionListener{
             ventanaPrincipal.dispose();
             aviso.verMensaje("Desconectado");
         }
+        if(e.getSource() == ventanaPrincipal.btnNuevoCliente){
+            new ClienteControl();
+        }
+
     }
 
 }
