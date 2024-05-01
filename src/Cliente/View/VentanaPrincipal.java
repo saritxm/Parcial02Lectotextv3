@@ -38,6 +38,9 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         btnLeer = new javax.swing.JButton();
         eTitulo = new javax.swing.JLabel();
         eLabel = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jRadioButton1 = new javax.swing.JRadioButton();
+        jRadioButton2 = new javax.swing.JRadioButton();
         eFondo = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -50,21 +53,21 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         TextArea.setRows(5);
         jScrollPane1.setViewportView(TextArea);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 210, 660, 200));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 210, 510, 200));
 
         btnSalir.setFont(new java.awt.Font("Stencil", 1, 50)); // NOI18N
         btnSalir.setForeground(new java.awt.Color(255, 255, 255));
         btnSalir.setText("SALIR");
         btnSalir.setBorderPainted(false);
         btnSalir.setContentAreaFilled(false);
-        jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 420, 230, 70));
+        jPanel1.add(btnSalir, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 420, 230, 70));
 
         btnLeer.setFont(new java.awt.Font("Stencil", 1, 50)); // NOI18N
         btnLeer.setForeground(new java.awt.Color(255, 255, 255));
         btnLeer.setText("Leer");
         btnLeer.setBorderPainted(false);
         btnLeer.setContentAreaFilled(false);
-        jPanel1.add(btnLeer, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 430, 200, 50));
+        jPanel1.add(btnLeer, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 430, 200, 50));
 
         eTitulo.setFont(new java.awt.Font("Sylfaen", 1, 24)); // NOI18N
         eTitulo.setForeground(new java.awt.Color(255, 255, 153));
@@ -76,6 +79,29 @@ public class VentanaPrincipal extends javax.swing.JFrame {
         eLabel.setText("Texto a leer (Escriba BYE para terminar):");
         jPanel1.add(eLabel, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 170, -1, -1));
 
+        jButton1.setFont(new java.awt.Font("Stencil", 1, 36)); // NOI18N
+        jButton1.setForeground(new java.awt.Color(255, 255, 255));
+        jButton1.setText("NUEVO CLIENTE");
+        jButton1.setBorderPainted(false);
+        jButton1.setContentAreaFilled(false);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 430, 330, 50));
+
+        jRadioButton1.setText("Inglés (En)");
+        jPanel1.add(jRadioButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 220, -1, -1));
+
+        jRadioButton2.setText("Español(Es)");
+        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioButton2ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jRadioButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 260, -1, -1));
+
         eFondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Cliente/View/GIF.gif"))); // NOI18N
         jPanel1.add(eFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -20, -1, 590));
 
@@ -83,6 +109,14 @@ public class VentanaPrincipal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jRadioButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -126,7 +160,10 @@ public class VentanaPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel eFondo;
     private javax.swing.JLabel eLabel;
     private javax.swing.JLabel eTitulo;
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JRadioButton jRadioButton1;
+    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
 
