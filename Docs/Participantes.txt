@@ -1,0 +1,6 @@
+Parcial #2 - LectoText
+Participantes:
+	- Nahin Jose Peñaranda Mejia 	20231020032
+	- Sara Nicolle Martinez Moreno	20231020116
+	- Marlon Yecid Riveros Guio	20231020208
+Link del repositorio en GitHub: https://github.com/saritxm/Parcial02Lectotextv3

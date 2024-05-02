@@ -32,7 +32,6 @@ public class threadServidor extends Thread {
       scli2 = scliente2; // Asigna el socket para enviar mensajes al cliente
       this.serv = serv; // Asigna el controlador del servidor
       nameUser = ""; // Inicializa el nombre del usuario como una cadena vacía
-      clientesActivos.add(this); // Agrega este hilo a la lista de hilos activos
       // Muestra un mensaje en el servidor indicando que se agregó un cliente
       serv.mostrar("Cliente agregado: " + this);
    }

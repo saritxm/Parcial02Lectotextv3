@@ -1,6 +1,5 @@
 package Cliente.View;
 
-import java.awt.EventQueue;
 import java.awt.Image;
 
 import javax.swing.ImageIcon;
