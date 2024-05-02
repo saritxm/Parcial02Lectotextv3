@@ -22,22 +22,21 @@ public class threadServidor extends Thread {
    public static Vector<threadServidor> clientesActivos = new Vector<>();
    String nameUser; // Nombre del usuario
    ServidorControl serv; // Referencia al controlador del servidor
-   private DatabaseDAO BD;
-   private String userP = "";
+   private DatabaseDAO BD; // Objeto para acceder a la base de datos
+   private String userP = ""; // Usuario actual
 
+   // Constructor de la clase
    public threadServidor(Socket scliente, Socket scliente2, ServidorControl serv) {
-      // Inicialización del objeto de acceso a la base de datos
-      this.BD = new DatabaseDAO();
-      scli = scliente; // Asigna el socket para mensajes generales
-      scli2 = scliente2; // Asigna el socket para mensajes privados
-      this.serv = serv;// Asigna la referencia al controlador del servidor
-      nameUser = ""; // Inicializa el nombre del usuario
-      clientesActivos.add(this);// Agrega este hilo a la lista de clientes activos
-      // variable de tipo servidor con mensaje extraido de la vista
+      this.BD = new DatabaseDAO(); // Inicializa el objeto para acceder a la base de datos
+      scli = scliente; // Asigna el socket de comunicación
+      scli2 = scliente2; // Asigna el socket para enviar mensajes al cliente
+      this.serv = serv; // Asigna el controlador del servidor
+      nameUser = ""; // Inicializa el nombre del usuario como una cadena vacía
+      clientesActivos.add(this); // Agrega este hilo a la lista de hilos activos
+      // Muestra un mensaje en el servidor indicando que se agregó un cliente
       serv.mostrar("Cliente agregado: " + this);
    }
-
-   // Métodos getter y setter para el nombre del usuario
+// Métodos getter y setter para el nombre del usuario
    public String getNameUser() {
       return nameUser;
    }
@@ -50,8 +49,7 @@ public class threadServidor extends Thread {
     * Método que se ejecuta cuando el hilo inicia
     */
    public void run() {
-      // Muestra un mensaje en la vista del servidor indicando que está esperando
-      // mensajes
+      // Muestra un mensaje en la vista del servidor indicando que está esperando órdenes
       serv.mostrar(".::Esperando ordenes :");
 
       try {
@@ -60,8 +58,7 @@ public class threadServidor extends Thread {
          salida = new DataOutputStream(scli.getOutputStream());
          salida2 = new DataOutputStream(scli2.getOutputStream());
       } catch (IOException e) {
-         // Muestra un mensaje en el servidor si hay un error al establecer los flujos de
-         // entrada y salida
+         // Muestra un mensaje en el servidor si hay un error al establecer los flujos de entrada y salida
          serv.mostrar(e.getMessage());
       }
 
@@ -73,30 +70,27 @@ public class threadServidor extends Thread {
             opcion = entrada.readInt();
             switch (opcion) {
                case 1:
-                  // Inicio de sesión
+               // Inicio de sesión
                   String user = entrada.readUTF();
                   String pass = entrada.readUTF();
                   try {
-                     // Verifica el inicio de sesión en la base de datos y envía el resultado al
-                     // cliente
+                     // Verifica el inicio de sesión en la base de datos y envía el resultado al cliente
                      salida.writeInt(BD.inicioSesion(user, pass));
                      if(BD.inicioSesion( user, pass)==1){
-                        setUserP(user);
-                        serv.mostrar("El usuario "+userP+"tuvo un logeo exitosos");
+                        setUserP(user); // Establece el usuario actual
+                        serv.mostrar("El usuario "+userP+"tuvo un logeo exitosos"); // Muestra un mensaje en el servidor
                      }
                   } catch (Exception e) {
                      // Muestra un mensaje en el servidor si hay un error al iniciar sesión
                      serv.mostrar(e.getMessage());
                   }
-
                   break;
                case 2:
-                  // Registro de usuario
+               // Registro de usuario
                   String user2 = entrada.readUTF();
                   String pass2 = entrada.readUTF();
                   try {
-                     // Agrega un nuevo usuario a la base de datos y envía un mensaje de confirmación
-                     // al cliente
+                     // Agrega un nuevo usuario a la base de datos y envía un mensaje de confirmación al cliente
                      BD.agregarUsuario(user2, pass2);
                      salida.writeBoolean(true);
                   } catch (Exception e) {
@@ -105,19 +99,18 @@ public class threadServidor extends Thread {
                   }
                   break;
                case 3:
-                  // Lectura de texto para reproducción de voz
+               // Lectura de texto para reproducción de voz
                   String msg = entrada.readUTF();
                   String lng = entrada.readUTF();
-                  // Llama al método para leer y reproducir el texto
-                  leerTexto(msg, lng);
-                  serv.mostrar("Reproduciendo texto de: " + userP +"\nMensaje: "+msg);
+                  leerTexto(msg, lng); // Llama al método para leer y reproducir el texto
+                  serv.mostrar("Reproduciendo texto de: " + userP +"\nMensaje: "+msg); // Muestra un mensaje en el servidor
 
                   break;
             }
          } catch (IOException e) {
-            // Muestra un mensaje en la vista del servidor si el cliente termina la conexión
+            // Muestra un mensaje en el servidor si el cliente termina la conexión
             serv.mostrar("Nos vemos "+userP);
-            leerTexto("Nos vemos "+userP, "Es");
+            leerTexto("Nos vemos "+userP, "Es"); // Lee y reproduce un mensaje de despedida
             break;
          }
       }
@@ -130,7 +123,7 @@ public class threadServidor extends Thread {
          serv.mostrar("no se puede cerrar el socket");
       }
    }
-
+// Métodos getter y setter para el usuario actual
    public String getUserP() {
       return userP;
    }
@@ -138,7 +131,9 @@ public class threadServidor extends Thread {
    public void setUserP(String userP) {
       this.userP = userP;
    }
-
+   /**
+    *  Método para leer y reproducir texto utilizando un sintetizador de voz
+    */
    public void leerTexto(String texto, String idioma) {
       try {
          // Configura la configuración del sintetizador de voz
