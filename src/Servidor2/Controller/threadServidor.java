@@ -22,20 +22,19 @@ public class threadServidor extends Thread {
    public static Vector<threadServidor> clientesActivos = new Vector<>();
    String nameUser; // Nombre del usuario
    ServidorControl serv; // Referencia al controlador del servidor
-   private DatabaseDAO BD; // Objeto para acceder a la base de datos
+   private DatabaseDAO BD;
+   private String userP = "";
 
    public threadServidor(Socket scliente, Socket scliente2, ServidorControl serv) {
       // Inicialización del objeto de acceso a la base de datos
       this.BD = new DatabaseDAO();
-
-      scli = scliente; // Asignación del socket de comunicación
-      scli2 = scliente2; // Asignación del socket para enviar mensajes al cliente
-      this.serv = serv; // Asignación del controlador del servidor
-      nameUser = ""; // Inicialización del nombre del usuario como cadena vacía
+      scli = scliente; // Asigna el socket para mensajes generales
+      scli2 = scliente2; // Asigna el socket para mensajes privados
+      this.serv = serv;// Asigna la referencia al controlador del servidor
+      nameUser = ""; // Inicializa el nombre del usuario
       clientesActivos.add(this);// Agrega este hilo a la lista de clientes activos
-      // Muestra un mensaje en el servidor indicando que se agregó un cliente
+      // variable de tipo servidor con mensaje extraido de la vista
       serv.mostrar("Cliente agregado: " + this);
-
    }
 
    // Métodos getter y setter para el nombre del usuario
@@ -53,7 +52,7 @@ public class threadServidor extends Thread {
    public void run() {
       // Muestra un mensaje en la vista del servidor indicando que está esperando
       // mensajes
-      serv.mostrar(".::Esperando Mensajes :");
+      serv.mostrar(".::Esperando ordenes :");
 
       try {
          // Inicializa los flujos de entrada y salida de datos
@@ -81,6 +80,10 @@ public class threadServidor extends Thread {
                      // Verifica el inicio de sesión en la base de datos y envía el resultado al
                      // cliente
                      salida.writeInt(BD.inicioSesion(user, pass));
+                     if(BD.inicioSesion( user, pass)==1){
+                        setUserP(user);
+                        serv.mostrar("El usuario "+userP+"tuvo un logeo exitosos");
+                     }
                   } catch (Exception e) {
                      // Muestra un mensaje en el servidor si hay un error al iniciar sesión
                      serv.mostrar(e.getMessage());
@@ -107,12 +110,14 @@ public class threadServidor extends Thread {
                   String lng = entrada.readUTF();
                   // Llama al método para leer y reproducir el texto
                   leerTexto(msg, lng);
-                  serv.mostrar("Reproduciendo texto");
+                  serv.mostrar("Reproduciendo texto de: " + userP +"\nMensaje: "+msg);
+
                   break;
             }
          } catch (IOException e) {
             // Muestra un mensaje en la vista del servidor si el cliente termina la conexión
-            serv.mostrar("El cliente termino la conexion");
+            serv.mostrar("Nos vemos "+userP);
+            leerTexto("Nos vemos "+userP, "Es");
             break;
          }
       }
@@ -126,7 +131,14 @@ public class threadServidor extends Thread {
       }
    }
 
-// Método para leer y reproducir texto usando sintetizador de voz
+   public String getUserP() {
+      return userP;
+   }
+
+   public void setUserP(String userP) {
+      this.userP = userP;
+   }
+
    public void leerTexto(String texto, String idioma) {
       try {
          // Configura la configuración del sintetizador de voz
