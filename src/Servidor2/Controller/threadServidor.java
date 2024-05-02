@@ -78,6 +78,7 @@ public class threadServidor extends Thread {
                      if(BD.inicioSesion( user, pass)==1){
                         setUserP(user); // Establece el usuario actual
                         serv.mostrar("El usuario "+userP+"tuvo un logeo exitosos"); // Muestra un mensaje en el servidor
+                        leerTexto("Hola "+userP,"Es");
                      }
                   } catch (Exception e) {
                      // Muestra un mensaje en el servidor si hay un error al iniciar sesión
