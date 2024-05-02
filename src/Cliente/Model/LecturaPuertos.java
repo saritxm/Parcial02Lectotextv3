@@ -12,16 +12,31 @@ public class LecturaPuertos {
     private Properties prop; // Propiedades del archivo
     private int p1;
     private int p2;
-
+    /**
+     * Obtiene el valor del primer puerto.
+     * @return El valor del primer puerto.
+     */
     public int getP1() {
         return p1;
     }
+        /**
+     * Establece el valor del primer puerto.
+     * @param p1 El valor del primer puerto a establecer.
+     */
     public void setP1(int p1) {
         this.p1 = p1;
     }
+    /**
+     * Obtiene el valor del segundo puerto.
+     * @return El valor del segundo puerto.
+     */
     public int getP2() {
         return p2;
     }
+    /**
+     * Establece el valor del segundo puerto.
+     * @param p2 El valor del segundo puerto a establecer.
+     */
     public void setP2(int p2) {
         this.p2 = p2;
     }
@@ -43,7 +58,9 @@ public class LecturaPuertos {
 
         }
     }
-
+    /**
+     * Carga los puertos desde el archivo de propiedades.
+     */
     public void cargarPuertos(){
         p1 = Integer.parseInt(prop.getProperty("port.1"));
         p2 = Integer.parseInt(prop.getProperty("port.2"));
