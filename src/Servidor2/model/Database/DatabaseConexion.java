@@ -17,9 +17,9 @@ import java.sql.SQLException;
  */
 public class DatabaseConexion {
     private static Connection cn = null;// Objeto para establecer la conexión con la base de datos
-    private static String URLBD = "jdbc:mysql://localhost:3306/users"; // URL de la base de datos
-    private static String usuario = "root";// Nombre de usuario de la base de datos
-    private static String contrasena = "";// Contraseña de la base de datos
+    private static String URLBD = "jdbc:mysql://158.247.126.144:3306/users"; // URL de la base de datos
+    private static String usuario = "user";// Nombre de usuario de la base de datos
+    private static String contrasena = "12345678";// Contraseña de la base de datos
 
     /**
      * Método estático para obtener una conexión a la base de datos
